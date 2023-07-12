@@ -38,5 +38,5 @@ jobs:
 
   redeploy:
       needs: check_labels
-      if: needs.check_labels == 'success'
+      if: success()
       uses: ./.github/workflows/01_very_simple.yml
