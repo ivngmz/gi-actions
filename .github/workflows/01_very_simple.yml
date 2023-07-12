@@ -1,0 +1,21 @@
+# This is a basic workflow to help you get started with Actions
+name: Commit and Label workflow
+
+# Controls when the action will run.
+on:
+  workflow_dispatch:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+jobs:
+  first-job:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Get labels
+        run: |
+          echo "First output"
+          echo "Second output"
+      - name: Execute deployment
+        run: echo "labels are ${labels}"
