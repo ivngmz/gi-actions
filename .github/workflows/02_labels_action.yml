@@ -38,4 +38,5 @@ jobs:
 
   redeploy:
     needs: check_labels
+    name: Check labels
     uses: ./.github/workflows/01_very_simple.yml
