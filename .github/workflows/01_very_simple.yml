@@ -18,4 +18,4 @@ jobs:
           echo "First output"
           echo "Second output"
       - name: Execute deployment
-        run: echo "labels are ${labels}"
+        run: echo "labels are variable"
