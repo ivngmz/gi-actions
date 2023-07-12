@@ -1,0 +1,10 @@
+name: Commit and Label workflow
+on: workflow_dispatch
+jobs:
+  first-job:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Get labels
+        run: labels=$(echo "labels adapters")
+      - name: Execute deployment
+        run: echo "labels are blabla"
