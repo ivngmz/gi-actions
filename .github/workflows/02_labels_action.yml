@@ -23,8 +23,8 @@ jobs:
         echo The PR was merged
 
   check_labels:
-    needs: if_merged
     name: Check labels
+    needs: if_merged
     runs-on: ubuntu-latest
     steps:
       - id: preview_label_check
@@ -32,11 +32,9 @@ jobs:
         with:
           one_of: adapters
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          allow_failure: true
-      - if: steps.preview_label_check.outputs.label_check == 'success'
-        run: echo deploy to ephemeral environment
 
   redeploy:
-      needs: check_labels
-      if: success()
-      uses: ./.github/workflows/01_very_simple.yml
+    name: Call redeploy task
+    needs: check_labels
+    if: success()
+    uses: ./.github/workflows/01_very_simple.yml
