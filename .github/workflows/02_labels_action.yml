@@ -42,4 +42,4 @@ jobs:
   redeploy:
     name: Call redeploy task
     needs: check_labels
-    uses: ./.github/workflows/01_very_simple.yml
+    uses: ./.github/workflows/01_very_simple.yml@main
