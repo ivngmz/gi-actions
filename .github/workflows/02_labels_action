@@ -1,10 +1,22 @@
 # This is a basic workflow to help you get started with Actions
 name: Label workflow
 
+
 # Controls when the action will run.
-on: workflow_dispatch
+on:
+  pull_request:
+    types:
+      - closed
+
 jobs:
+  if_merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo The PR was merged
   test:
+    runs-on: ubuntu-latest
     steps:
       - name: Get PR labels
         id: pr-labels
