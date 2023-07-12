@@ -8,11 +8,11 @@ name: Scala CI
 on:
   push:
     branches: [ "main" ]
-    paths:
+    paths-ignore:
       - '!.github/**'
   pull_request:
     branches: [ "main" ]
-    paths:
+    paths-ignore:
       - '!.github/**'
 
 permissions:
