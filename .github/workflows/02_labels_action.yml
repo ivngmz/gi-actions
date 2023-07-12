@@ -37,5 +37,5 @@ jobs:
         run: echo deploy to ephemeral environment
 
   redeploy:
-    needs: check_labels
-    uses: ./.github/workflows/01_very_simple.yml@main
+      needs: check_labels
+      uses: ./.github/workflows/01_very_simple.yml
