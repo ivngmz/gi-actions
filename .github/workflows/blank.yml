@@ -7,4 +7,4 @@ jobs:
       - name: Get labels
         run: labels=$(echo "labels adapters")
       - name: Execute deployment
-        run: echo "labels are blabla"
+        run: echo "labels are ${labels}"
