@@ -38,8 +38,4 @@ jobs:
 
   redeploy:
     needs: check_labels
-<<<<<<< HEAD
     uses: ./.github/workflows/01_very_simple.yml@main
-=======
-    uses: ./.github\workflows\01_very_simple.yml
->>>>>>> d05b0ab6d0223f4d4434b39e45fbec0fb170c311
