@@ -29,7 +29,7 @@ jobs:
         echo The PR was merged
 
   check_labels:
-    name: Check labels
+    name: Check label
     needs: if_merged
     runs-on: ubuntu-latest
     steps:
