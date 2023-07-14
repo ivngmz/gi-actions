@@ -41,7 +41,7 @@ jobs:
       - if: steps.preview_label_check.outputs.label_check == 'success'
         run: |
           echo "Deploy to env ${{ env.TEST_VARIABLE }}"
-          ECHO "OUTCOME: {{ needs.jobs.check_labels.preview_label_check.outcome }}""
+          ECHO "OUTCOME: {{ needs.jobs.check_labels.preview_label_check.outcome }}"
   redeploy:
     name: Call redeploy task
     needs: check_labels
