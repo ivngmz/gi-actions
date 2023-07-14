@@ -35,14 +35,13 @@ jobs:
       - id: preview_label_check
         uses: docker://agilepathway/pull-request-label-checker:latest
         with:
+          continueOnError: true
           one_of: adapters
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          continueOnError: true
-      - if: steps.preview_label_check.outputs.label_check == 'success'
+      - if: steps.preview_label_check.conclusion == 'success'
         run: |
-          echo "Deploy to env ${{ env.TEST_VARIABLE }}"
           echo  "steps.preview_label_check.outcome: ${{ steps.preview_label_check.outcome }}"
-          echo  "steps.preview_label_check.outputs: ${{ steps.preview_label_check.outputs }}"
+          echo  "steps.preview_label_check.conclusion: ${{ steps.preview_label_check.outputs }}"
   redeploy:
     name: Call redeploy task
     needs: check_labels
