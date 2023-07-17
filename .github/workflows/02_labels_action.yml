@@ -43,7 +43,7 @@ jobs:
         if: steps.preview_label_check.conclusion == 'success'
         run: |
           echo  "steps.preview_label_check.outcome: ${{ steps.preview_label_check.outcome }}"
-          echo  "steps.preview_label_check.conclusion: ${{ steps.preview_label_check.outputs }}"
+          echo  "steps.preview_label_check.conclusion: ${{ steps.preview_label_check.conclusion }}"
   redeploy:
     name: Call redeploy task
     needs: check_labels
