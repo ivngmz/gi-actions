@@ -47,5 +47,15 @@ jobs:
   redeploy:
     name: Call redeploy task
     needs: check_labels
-    if: success() && check_labels.preview_label_check.outcome == 'success'
+    if: success() && needs.check_labels.preview_label_check.outcome == 'success'
     uses: ./.github/workflows/01_very_simple.yml
+
+  report:
+    needs: [check_labels, redeploy]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output information
+        run: |
+          echo "Something went wrong"
+          echo "${{ toJSON(github) }}"
