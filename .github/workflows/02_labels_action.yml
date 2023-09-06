@@ -33,7 +33,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Preview
-        continue-on-error: true
         id: preview_label_check
         uses: docker://agilepathway/pull-request-label-checker:latest
         with:
