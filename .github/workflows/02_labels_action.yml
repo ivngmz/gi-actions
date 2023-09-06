@@ -1,6 +1,6 @@
 name: Label workflow
 
-# Controls when the action will run. Test improve.
+# Controls when the action will run. 
 on:
   pull_request:
     types:
