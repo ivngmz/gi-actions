@@ -32,26 +32,11 @@ jobs:
     needs: if_merged
     runs-on: ubuntu-latest
     steps:
-      - name: Preview
-        id: preview_label_check
+      - id: preview_label_check
         uses: docker://agilepathway/pull-request-label-checker:latest
         with:
+          continueOnError: true
           one_of: adapters
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-
-  redeploy:
-    name: Call redeploy task
-    needs: check_labels
-    if: success() 
-    uses: ./.github/workflows/01_very_simple.yml
-
-  report:
-    needs: [check_labels, redeploy]
-    if: failure()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Output information
-        continue-on-error: true
-        run: |
-          echo "Something went wrong"
-          echo "${{ toJSON(github) }}"
+      - if: steps.preview_label_check.conclusion == 'success'
+        uses: ./.github/workflows/01_very_simple.yml
