@@ -38,5 +38,7 @@ jobs:
         with:
           one_of: adapters
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-      - if: steps.preview_label_check.conclusion == 'success'
+
+      - name: Call redeploy task
+        if: success() 
         uses: ./.github/workflows/01_very_simple.yml
