@@ -52,6 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output information
+        continue-on-error: true
         run: |
           echo "Something went wrong"
           echo "${{ toJSON(github) }}"
