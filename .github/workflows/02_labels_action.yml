@@ -32,18 +32,30 @@ jobs:
     needs: if_merged
     runs-on: ubuntu-latest
     steps:
-      - id: preview_label_check
+      - name: Preview
+        continue-on-error: true
+        id: preview_label_check
         uses: docker://agilepathway/pull-request-label-checker:latest
         with:
-          continueOnError: true
           one_of: adapters
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-      - if: steps.preview_label_check.conclusion == 'success'
+      - name: Test Values
+        if: steps.preview_label_check.conclusion == 'success'
         run: |
           echo  "steps.preview_label_check.outcome: ${{ steps.preview_label_check.outcome }}"
-          echo  "steps.preview_label_check.conclusion: ${{ steps.preview_label_check.outputs }}"
+          echo  "steps.preview_label_check.conclusion: ${{ steps.preview_label_check.conclusion }}"
   redeploy:
     name: Call redeploy task
     needs: check_labels
-    if: needs.jobs.check_labels.preview_label_check.outcome == 'success'
+    if: success() && needs.check_labels.preview_label_check.outcome == 'success'
     uses: ./.github/workflows/01_very_simple.yml
+
+  report:
+    needs: [check_labels, redeploy]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output information
+        run: |
+          echo "Something went wrong"
+          echo "${{ toJSON(github) }}"
