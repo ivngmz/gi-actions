@@ -8,9 +8,6 @@ on:
     branches:
       - main
 
-env:
- ENV_VARIABLE: adapters
-
 jobs:
   context-info:
     name: Info
@@ -44,4 +41,4 @@ jobs:
     if: success() 
     uses: ./.github/workflows/01_very_simple.yml
     with:
-      LABEL: ${{ env.ENV_VARIABLE }}
+      LABEL: 'adapters'
