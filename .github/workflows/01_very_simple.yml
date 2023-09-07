@@ -4,17 +4,25 @@ name: Commit and Label workflow
 # Controls when the action will run.
 on:
   workflow_dispatch:
+  
   workflow_call:
-  push:
-    branches: [ "main" ]
-    paths-ignore: '.github/**'
+    inputs:
+      LABEL:
+        description: 'Environment to deploy current sha.'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+          - dev
+          - adapters
+  
 jobs:
   first-job:
     runs-on: ubuntu-22.04
     steps:
       - name: Get labels
         run: |
-          echo "First output"
+          echo "First output: github.event.inputs.LABEL"
           echo "Second output"
       - name: Execute deployment
         run: echo "labels are variable"

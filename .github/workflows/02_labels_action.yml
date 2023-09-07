@@ -9,7 +9,7 @@ on:
       - main
 
 env:
-  TEST_VARIABLE: adapters
+ ENV_VARIABLE: adapters
 
 jobs:
   context-info:
@@ -42,3 +42,5 @@ jobs:
       - name: Call redeploy task
         if: success() 
         uses: ./.github/workflows/01_very_simple.yml
+          with:
+            LABEL: ${{ env.ENV_VARIABLE }}
