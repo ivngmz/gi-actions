@@ -38,6 +38,7 @@ jobs:
 
   execute_workflow:
     name: Call redeploy task
+    needs: check_labels
     if: success() 
     uses: ./.github/workflows/01_very_simple.yml
     with:
