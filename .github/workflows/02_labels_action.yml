@@ -39,8 +39,9 @@ jobs:
           one_of: adapters
           repo_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Call redeploy task
-        if: success() 
-        uses: ./.github/workflows/01_very_simple.yml
-        with:
-          LABEL: ${{ env.ENV_VARIABLE }}
+execute_workflow:
+  name: Call redeploy task
+  if: success() 
+  uses: ./.github/workflows/01_very_simple.yml
+  with:
+    LABEL: ${{ env.ENV_VARIABLE }}
