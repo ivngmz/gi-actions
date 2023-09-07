@@ -16,7 +16,8 @@ on:
 
   workflow_call:
     inputs:
-      LABEL: 'Environment to deploy current sha.'
+      LABEL: 
+        description: 'Environment to deploy current sha.'
         type: string
         required: true
 
