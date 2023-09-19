@@ -1,0 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+name: Commit and Label workflow
+
+# Controls when the action will run.
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+jobs:
+  first-job:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Sleep for 30 seconds
+        run: sleep 30s
+        shell: bash
+      - name: Get labels
+        run: |
+          echo "First output: github.event.inputs.LABEL"
+          echo "Second output"
+      - name: Execute deployment
+        run: echo "labels are variable"
