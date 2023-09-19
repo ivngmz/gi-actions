@@ -8,14 +8,18 @@ on:
     branches:
       - main
 
-concurrency:
-  group: ci-${{ github.base_ref }}
-
 jobs:
   context-info:
     name: Info
     runs-on: ubuntu-latest
     steps:
+      - name: Wait for tests to succeed
+        uses: lewagon/wait-on-check-action@v1.3.1
+        with:
+          ref: ${{ github.ref }}
+          check-name: 'push-job'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
       - run: echo "${{ toJSON(github) }}"
 
   if_merged:
