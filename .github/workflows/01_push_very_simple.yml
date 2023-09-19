@@ -10,7 +10,7 @@ on:
       - '*'
 
 concurrency:
-  group: ${{ github.workflow }} || ci-${{ github.base_ref }}
+  group: ${{ github.workflow || github.base_ref }}
 
 jobs:
   first-job:
