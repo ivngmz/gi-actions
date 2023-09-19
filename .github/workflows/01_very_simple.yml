@@ -22,12 +22,16 @@ on:
         required: true
 
 concurrency:
-  group: ${{ github.workflow }} || ci-${{ github.ref }}
+  group: ${{ github.workflow }} || ci-${{ github.base_ref }}
 
 jobs:
   first-job:
     runs-on: ubuntu-22.04
     steps:
+      - name: Sleep for 30 seconds
+        run: sleep 30s
+        shell: bash
+
       - name: Get labels
         run: |
           echo "First output: github.event.inputs.LABEL"
