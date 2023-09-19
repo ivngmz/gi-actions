@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Sleep for 30 seconds
-        run: sleep 30s
+        run: sleep 130s
         shell: bash
 
       - name: Get labels

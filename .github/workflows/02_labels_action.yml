@@ -9,7 +9,7 @@ on:
       - main
 
 concurrency:
-  group: ${{ github.workflow }} || ci-${{ github.base_ref }}
+  group: ci-${{ github.base_ref }}
 
 jobs:
   context-info:
