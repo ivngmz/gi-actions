@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }} || ci-${{ github.base_ref }}
+
 jobs:
   context-info:
     name: Info
