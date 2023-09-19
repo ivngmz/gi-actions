@@ -13,8 +13,6 @@ jobs:
   push-job:
     runs-on: ubuntu-22.04
     steps:
-      - run: echo "${{ toJSON(github) }}"
-
       - name: Sleep for 30 seconds
         run: sleep 130s
         shell: bash
