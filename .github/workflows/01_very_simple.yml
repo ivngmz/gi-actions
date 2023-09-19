@@ -21,6 +21,9 @@ on:
         type: string
         required: true
 
+concurrency:
+  group: ${{ github.workflow }} || ci-${{ github.ref }}
+
 jobs:
   first-job:
     runs-on: ubuntu-22.04
