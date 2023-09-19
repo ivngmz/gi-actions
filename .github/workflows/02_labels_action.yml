@@ -19,7 +19,7 @@ jobs:
           ref: ${{ github.ref }}
           check-name: 'push-job'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 10
+          wait-interval: 60
       - run: echo "${{ toJSON(github) }}"
 
   if_merged:
